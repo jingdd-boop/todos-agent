@@ -1,16 +1,13 @@
-FROM node:22-bookworm-slim AS runtime
+FROM node:22-bookworm AS runtime
 
 WORKDIR /app
 
 RUN corepack enable && corepack prepare pnpm@9.15.9 --activate
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends python3 make g++ openssl \
-  && rm -rf /var/lib/apt/lists/*
-
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile --prod=false
 
 COPY prisma ./prisma
+COPY docs ./docs
 COPY tsconfig.json prisma.config.ts ./
 COPY src ./src
 RUN pnpm exec prisma generate
@@ -24,4 +21,4 @@ ENV DATABASE_URL=file:/app/data/todo.db
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "pnpm exec prisma migrate deploy && pnpm start"]
+CMD ["sh", "-c", "node_modules/.bin/prisma migrate deploy && node_modules/.bin/tsx src/server.ts"]

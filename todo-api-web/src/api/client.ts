@@ -1,5 +1,6 @@
 const TOKEN_KEY = 'todo_token'
-const API_HOST = import.meta.env.VITE_API_HOST || 'http://localhost:3000'
+const API_HOST =
+  import.meta.env.VITE_API_HOST ?? (import.meta.env.DEV ? 'http://localhost:3000' : '')
 
 export async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
   const headers = new Headers(init.headers)
