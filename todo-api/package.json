@@ -1,0 +1,41 @@
+{
+  "name": "todo-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts",
+    "test": "tsx --test test/agent-evaluation/agent-evaluation.test.ts test/agent-evaluation/phase2-evaluation.test.ts",
+    "test:agent": "tsx --test test/agent-evaluation/agent-evaluation.test.ts test/agent-evaluation/phase2-evaluation.test.ts",
+    "test:agent:stream": "tsx --test test/agent-evaluation/phase2-evaluation.test.ts",
+    "test:agent:integration": "DATABASE_URL=file:/private/tmp/todo-agent-evaluation.db prisma migrate deploy && DATABASE_URL=file:/private/tmp/todo-agent-evaluation.db tsx --test test/agent-evaluation/database-integration.test.ts",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\" \"prisma/**/*.{prisma,ts}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\" \"prisma/**/*.{prisma,ts}\"",
+    "prisma:generate": "prisma generate",
+    "studio": "NODE_OPTIONS=--experimental-sqlite prisma studio --url \"file://${PWD}/dev.db\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/adapter-better-sqlite3": "^7.10.0",
+    "@prisma/client": "^7.10.0",
+    "bcrypt": "^6.0.0",
+    "better-sqlite3": "^13.0.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "zod": "^4.6.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^22.20.2",
+    "dotenv": "^17.4.2",
+    "prisma": "7.10.0",
+    "prettier": "^3.9.6",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  }
+}

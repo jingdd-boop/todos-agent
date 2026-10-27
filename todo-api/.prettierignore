@@ -1,0 +1,5 @@
+node_modules
+dev.db
+data
+dist
+docs/assistant-web

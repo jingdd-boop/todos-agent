@@ -1,0 +1,15 @@
+node_modules/
+.pnpm-store/
+dist/
+.env
+.env.*
+!.env.example
+!.env.docker.example
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+.DS_Store
+.agents/
+.claude/
+.windsurf/

@@ -1,0 +1,7 @@
+{
+  "name": "todo-assistant-web",
+  "private": true,
+  "scripts": { "dev": "vite" },
+  "dependencies": { "@vitejs/plugin-react": "latest", "vite": "latest", "typescript": "latest", "react": "latest", "react-dom": "latest" },
+  "devDependencies": {}
+}
